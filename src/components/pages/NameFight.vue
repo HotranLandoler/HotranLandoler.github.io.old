@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 const modifiers = ["柔弱", "普通", "强力的", "威力惊人"];
 const mods = [0.5, 1.0, 2.0, 3.0];
 const special_actions = ["Idle", "Heal", "咬", "天谴"];
@@ -19,7 +19,7 @@ console.assert(
   "Array length not equal!"
 );
 
-function getRandomElement(array) {
+function getRandomElement<T>(array: T[]) {
   const index = Math.floor(Math.random() * array.length);
   return [array[index], index];
 }
@@ -33,7 +33,7 @@ export default {
     return {
       names: ["玩家A", "玩家B"],
       HPs: [100, 100],
-      logs: [],
+      logs: [] as string[],
       fighting: false,
       winner: "",
     };
@@ -64,7 +64,7 @@ export default {
         roundCount++;
         if (roundCount > 50) {
           console.error("Too many rounds! There may be some errors.");
-          this.result = "未分胜负";
+          // this.result = "未分胜负";
           break;
         }
         await delay(1000);
@@ -74,7 +74,7 @@ export default {
       this.logs.unshift(`${this.winner}取得了胜利！`);
       this.fighting = false;
     },
-    attack(rounder) {
+    attack(rounder: number) {
       const who = this.names[rounder];
       const to = this.names[1 - rounder];
 
@@ -113,7 +113,7 @@ export default {
       }
 
       const [modifier, modIndex] = getRandomElement(modifiers);
-      const damage = Math.floor(attackBases[index] * mods[modIndex]);
+      const damage = Math.floor(attackBases[index] * mods[modIndex as number]);
       this.HPs[1 - rounder] -= damage;
       this.logs.unshift(
         `${who}使用了${modifier}的【${attack}】，造成了${damage}点伤害！`
