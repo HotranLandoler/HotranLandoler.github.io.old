@@ -1,29 +1,29 @@
 <script lang="ts">
-const modifiers = ["柔弱", "普通", "强力的", "威力惊人"];
-const mods = [0.5, 1.0, 2.0, 3.0];
-const special_actions = ["Idle", "Heal", "咬", "天谴"];
-const heals = ["思考了生命的意义", "喝了一杯奶茶", "喝下了神秘药水"];
-const attackTypes = [
-  "喵喵拳",
-  "嘲讽",
-  "火球术",
-  "元气弹",
-  "咸鱼冲刺",
-  "重拳出击",
-];
-const attackBases = [0, 2, 6, 8, 10, 12];
-const healRange = [1, 20];
+import { nameFightData as data } from "../../data";
+// const modifiers = ["柔弱", "普通", "强力的", "威力惊人"];
+// const mods = [0.5, 1.0, 2.0, 3.0];
+// const special_actions = ["Idle", "Heal", "咬", "天谴"];
+// const heals = ["思考了生命的意义", "喝了一杯奶茶", "喝下了神秘药水"];
+// const attackTypes = [
+//   "喵喵拳",
+//   "嘲讽",
+//   "火球术",
+//   "元气弹",
+//   "咸鱼冲刺",
+//   "重拳出击",
+// ];
+// const attackBases = [0, 2, 6, 8, 10, 12];
+// const healRange = [1, 20];
 
 console.assert(
-  attackTypes.length === attackBases.length,
+  data.attackTypes.length === data.attackBases.length,
   "Array length not equal!"
 );
 
-function getRandomElement<T>(array: T[]) {
+function getRandomElement<T>(array: T[]): [T, number] {
   const index = Math.floor(Math.random() * array.length);
   return [array[index], index];
 }
-// function randomAttack() {}
 
 const delay = async (ms = 1000) =>
   new Promise((resolve) => setTimeout(resolve, ms));
@@ -81,12 +81,13 @@ export default {
       //动作类型
       if (Math.random() > 0.8) {
         //特殊动作
-        const [special, _] = getRandomElement(special_actions);
+        const [special, _] = getRandomElement(data.special_actions);
         if (special === "Idle") this.logs.unshift(`${who}开始怀疑人生。`);
         if (special === "Heal") {
-          const [heal, _] = getRandomElement(heals);
+          const [heal, _] = getRandomElement(data.heals);
           const healNum = Math.floor(
-            Math.random() * (healRange[1] - healRange[0]) + healRange[0]
+            Math.random() * (data.healRange[1] - data.healRange[0]) +
+              data.healRange[0]
           );
           this.HPs[rounder] += healNum;
           this.logs.unshift(`${who}${heal}, 恢复了${healNum}点生命！`);
@@ -103,8 +104,8 @@ export default {
       }
 
       //攻击类型
-      const index = Math.floor(Math.random() * attackTypes.length);
-      const attack = attackTypes[index];
+      const index = Math.floor(Math.random() * data.attackTypes.length);
+      const attack = data.attackTypes[index];
 
       const hit = Math.random() <= 0.9;
       if (hit == false) {
@@ -112,8 +113,8 @@ export default {
         return;
       }
 
-      const [modifier, modIndex] = getRandomElement(modifiers);
-      const damage = Math.floor(attackBases[index] * mods[modIndex as number]);
+      const [modifier, modIndex] = getRandomElement(data.modifiers);
+      const damage = Math.floor(data.attackBases[index] * data.mods[modIndex]);
       this.HPs[1 - rounder] -= damage;
       this.logs.unshift(
         `${who}使用了${modifier}的【${attack}】，造成了${damage}点伤害！`
@@ -200,6 +201,7 @@ section {
 
 progress {
   width: 100%;
+  color: red;
 }
 
 input {
