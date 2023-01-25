@@ -5,34 +5,46 @@
       <div>LOU</div>
     </div>
     <nav>
-      <router-link to="/art">art</router-link>
-      <router-link to="/game">game</router-link>
-      <router-link to="/about">about</router-link>
+      <ul class="nav-list">
+        <li>
+          <router-link to="/art">art</router-link>
+        </li>
+        <li>
+          <router-link to="/game">game</router-link>
+        </li>
+        <li>
+          <router-link to="/about">about</router-link>
+        </li>
+      </ul>
     </nav>
   </header>
   <router-view></router-view>
 </template>
 
 <style scoped>
-nav {
-  /* align-self: center; */
-  /* justify-self: end; */
+/* nav {
   display: flex;
   gap: 2rem;
   font-size: 18px;
   font-family: "Raleway", sans-serif;
   letter-spacing: 3px;
-}
-a {
+} */
+a:link,
+a:visited {
+  font-size: 1.5rem;
+  letter-spacing: 3px;
   text-transform: uppercase;
   text-decoration: none;
-  color: black;
-  transition: background-color 0.2s;
+  color: #333;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom 0.2s;
 }
 
-a:hover {
+a:hover,
+a:active {
   /* background-color: lightsalmon; */
-  text-decoration: underline;
+  /* text-decoration: underline; */
+  border-bottom: 1px solid #333;
 }
 .main-header {
   /* border: 2px solid salmon; */
@@ -54,9 +66,15 @@ a:hover {
 }
 .logo {
   font-family: Georgia, "Times New Roman", Times, serif;
+  color: #444;
   text-transform: uppercase;
   font-size: 28pt;
   font-weight: bold;
   letter-spacing: -3.5px;
+}
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 4rem;
 }
 </style>
