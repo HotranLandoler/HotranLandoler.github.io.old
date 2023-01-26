@@ -22,16 +22,9 @@
 </template>
 
 <style scoped>
-/* nav {
-  display: flex;
-  gap: 2rem;
-  font-size: 18px;
-  font-family: "Raleway", sans-serif;
-  letter-spacing: 3px;
-} */
 a:link,
 a:visited {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   letter-spacing: 3px;
   text-transform: uppercase;
   text-decoration: none;
@@ -42,24 +35,13 @@ a:visited {
 
 a:hover,
 a:active {
-  /* background-color: lightsalmon; */
-  /* text-decoration: underline; */
   border-bottom: 1px solid #333;
 }
 .main-header {
-  /* border: 2px solid salmon; */
-  /* background-color: salmon; */
-  /* background-image: url(https://images.hdqwalls.com/wallpapers/warrior-dreamy-concept-fantasy-digital-art-artwork-56.jpg); */
-  background-size: 100%;
-  background-attachment: fixed;
   margin-bottom: 2rem;
   padding: 1rem 4rem;
   /* height: 15rem; */
-  position: relative;
 
-  /* display: grid; */
-  /* grid-template-columns: auto 1fr; */
-  /* grid-template-rows: auto 1fr; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -68,7 +50,7 @@ a:active {
   font-family: Georgia, "Times New Roman", Times, serif;
   color: #444;
   text-transform: uppercase;
-  font-size: 28pt;
+  font-size: 2rem;
   font-weight: bold;
   letter-spacing: -3.5px;
 }

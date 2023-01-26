@@ -2,7 +2,7 @@ import type { Ref } from "vue";
 import { getRandomElement, delay } from "../../utils";
 import { nameFightData as data } from "../../data";
 
-interface Player {
+export interface Player {
   name: string;
   hp: number;
 }

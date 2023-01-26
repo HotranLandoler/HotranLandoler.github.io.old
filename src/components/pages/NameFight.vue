@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { ref, reactive, computed } from "vue";
+import { ref, reactive } from "vue";
+import Fighter from "../Fighter.vue";
 import { gameLoop } from "./NameFight";
 
 const players = reactive([
@@ -15,8 +16,8 @@ const players = reactive([
 const logs = ref<string[]>([]);
 const fighting = ref(false);
 
-const barA = computed(() => players[0].hp / 100.0);
-const barB = computed(() => players[1].hp / 100.0);
+// const barA = computed(() => players[0].hp / 100.0);
+// const barB = computed(() => players[1].hp / 100.0);
 
 async function start() {
   for (const player of players) {
@@ -30,30 +31,42 @@ async function start() {
 </script>
 
 <template>
-  <div id="game">
-    <div class="health-area">
-      <section id="monster" class="container">
+  <section class="game">
+    <h2>姓名大战</h2>
+    <div class="container">
+      <div class="health-area card">
+        <fighter class="fighter" :name="players[0].name" :hp="players[0].hp" />
+        <!-- <section id="monster" class="container">
         <input type="text" v-model="players[0].name" />
         <progress :value="barA"></progress>
-      </section>
-      <button @click="start" :disabled="fighting">Start</button>
-      <section id="player" class="container">
+      </section> -->
+        <button class="start-button" @click="start" :disabled="fighting">
+          Start
+        </button>
+        <fighter class="fighter" :name="players[1].name" :hp="players[1].hp" />
+        <!-- <section id="player" class="container">
         <input type="text" v-model="players[1].name" />
         <progress class="flipx" :value="barB"></progress>
-      </section>
+      </section> -->
+      </div>
+      <div class="log">
+        <h4>战斗记录</h4>
+        <ul>
+          <transition-group name="slide-fade" appear>
+            <li v-for="log in logs" :key="log">{{ log }}</li>
+          </transition-group>
+        </ul>
+      </div>
     </div>
-    <section id="log" class="center">
-      <h4>战斗记录</h4>
-      <ul>
-        <transition-group name="slide-fade" appear>
-          <li v-for="log in logs" :key="log">{{ log }}</li>
-        </transition-group>
-      </ul>
-    </section>
-  </div>
+  </section>
 </template>
 
 <style scoped>
+h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
 .slide-fade-enter-active {
   transition: all 0.3s ease-out;
 }
@@ -73,17 +86,24 @@ async function start() {
   transition: transform 0.3s ease;
 }
 
-#log ul {
+.game {
+  width: 100%;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.log ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-#log li {
+.log li {
   margin: 0.5rem 0;
 }
 
-#log {
+.log {
+  margin: 0 auto;
   width: 70%;
   text-align: center;
   padding: 0.5rem;
@@ -100,36 +120,6 @@ header {
   margin-bottom: 2rem;
 }
 
-section {
-  width: 40%;
-}
-
-progress {
-  width: 100%;
-  color: red;
-}
-
-input {
-  width: 80%;
-  border: 2px solid #8fc5e8;
-  border-radius: 10px;
-  outline-style: none;
-  font-size: x-large;
-  text-align: center;
-}
-
-input:hover {
-  border: 2px solid #2696e0;
-}
-
-input:focus {
-  border: 2px solid #006db5;
-}
-
-.center {
-  margin: 0 auto;
-}
-
 .flipx {
   -moz-transform: scale(-1, 1);
   -webkit-transform: scale(-1, 1);
@@ -139,57 +129,48 @@ input:focus {
 }
 
 .health-area {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  margin-bottom: 1rem;
 
-.healthbar {
-  width: 100%;
-  height: 40px;
-  border: 1px solid #575757;
-  margin: 1rem 0;
-  background: #fde5e5;
-}
-
-.healthbar__value {
-  background-color: #00a876;
-  width: 100%;
-  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  column-gap: 1rem;
 }
 
 .container {
-  text-align: center;
+  margin: 0 auto 1rem auto;
+  max-width: 60rem;
+}
+
+.card {
   padding: 0.5rem;
-  margin: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   border-radius: 12px;
 }
 
-button {
+.start-button {
   font: inherit;
   border: 1px solid #88005b;
   background-color: #88005b;
   color: white;
-  padding: 1rem 1rem;
+  padding: 1rem 1.5rem;
   border-radius: 12px;
-  width: 10%;
+  /* width: 10%; */
   cursor: pointer;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
 }
 
-button:focus {
+.start-button:focus {
   outline: none;
 }
 
-button:hover,
-button:active {
+.start-button:hover,
+.start-button:active {
   background-color: #af0a78;
   border-color: #af0a78;
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.26);
 }
 
-button:disabled {
+.start-button:disabled {
   background-color: #ccc;
   border-color: #ccc;
   box-shadow: none;
@@ -197,19 +178,20 @@ button:disabled {
   cursor: not-allowed;
 }
 
-.log--player {
-  color: #7700ff;
-}
-
-.log--monster {
-  color: #da8d00;
-}
-
-.log--damage {
-  color: red;
-}
-
-.log--heal {
-  color: green;
+/* Mobile */
+@media (max-width: 30em) {
+  .health-area {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .fighter {
+    grid-column: span 3;
+  }
+  .start-button {
+    grid-row: 2;
+    grid-column: 3 / 5;
+  }
+  .log {
+    width: 100%;
+  }
 }
 </style>
