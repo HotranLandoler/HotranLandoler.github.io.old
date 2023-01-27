@@ -38,7 +38,7 @@ a:active {
   border-bottom: 1px solid #333;
 }
 .main-header {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   padding: 1rem 4rem;
   /* height: 15rem; */
 

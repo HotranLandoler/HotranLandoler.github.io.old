@@ -35,22 +35,23 @@ async function start() {
     <h2>姓名大战</h2>
     <div class="container">
       <div class="health-area card">
-        <fighter class="fighter" :name="players[0].name" :hp="players[0].hp" />
-        <!-- <section id="monster" class="container">
-        <input type="text" v-model="players[0].name" />
-        <progress :value="barA"></progress>
-      </section> -->
+        <fighter
+          class="fighter"
+          v-model="players[0].name"
+          :hp="players[0].hp"
+        />
         <button class="start-button" @click="start" :disabled="fighting">
           Start
         </button>
-        <fighter class="fighter" :name="players[1].name" :hp="players[1].hp" />
-        <!-- <section id="player" class="container">
-        <input type="text" v-model="players[1].name" />
-        <progress class="flipx" :value="barB"></progress>
-      </section> -->
+        <fighter
+          class="fighter"
+          v-model="players[1].name"
+          :hp="players[1].hp"
+          flip
+        />
       </div>
-      <div class="log">
-        <h4>战斗记录</h4>
+      <div class="log card">
+        <p class="log-title">战斗记录</p>
         <ul>
           <transition-group name="slide-fade" appear>
             <li v-for="log in logs" :key="log">{{ log }}</li>
@@ -94,38 +95,21 @@ h2 {
 
 .log ul {
   list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.log li {
-  margin: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .log {
   margin: 0 auto;
-  width: 70%;
-  text-align: center;
+  max-width: 40rem;
   padding: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  border-radius: 12px;
 }
 
-header {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  padding: 0.5rem;
-  background-color: #880017;
-  color: white;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.flipx {
-  -moz-transform: scale(-1, 1);
-  -webkit-transform: scale(-1, 1);
-  -o-transform: scale(-1, 1);
-  -ms-transform: scale(-1, 1);
-  transform: scale(-1, 1);
+.log-title {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
 }
 
 .health-area {
@@ -133,6 +117,7 @@ header {
 
   display: grid;
   grid-template-columns: 1fr auto 1fr;
+  align-items: center;
   column-gap: 1rem;
 }
 
@@ -148,33 +133,35 @@ header {
 }
 
 .start-button {
-  font: inherit;
-  border: 1px solid #88005b;
+  font-family: inherit;
+  font-size: 1.5rem;
+  font-weight: 500;
+  border: none;
   background-color: #88005b;
   color: white;
-  padding: 1rem 1.5rem;
+  padding: 0.6rem 1.2rem;
   border-radius: 12px;
-  /* width: 10%; */
   cursor: pointer;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+  transition: all 0.2s;
 }
 
 .start-button:focus {
   outline: none;
+  box-shadow: 0 0 0 0.5rem #fab4f6b3;
 }
 
 .start-button:hover,
 .start-button:active {
   background-color: #af0a78;
-  border-color: #af0a78;
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.26);
 }
 
 .start-button:disabled {
+  color: #fff;
   background-color: #ccc;
   border-color: #ccc;
   box-shadow: none;
-  color: #3f3f3f;
   cursor: not-allowed;
 }
 
@@ -189,9 +176,6 @@ header {
   .start-button {
     grid-row: 2;
     grid-column: 3 / 5;
-  }
-  .log {
-    width: 100%;
   }
 }
 </style>
