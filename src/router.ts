@@ -4,7 +4,7 @@ import About from "./components/pages/About.vue";
 import { createRouter, createWebHashHistory } from "vue-router";
 
 const routes = [
-  { path: "/", redirect: "/art" },
+  { path: "/", redirect: "/game" },
   { path: "/art", component: Arts },
   { path: "/game", component: NameFight },
   { path: "/about", component: About },

@@ -3,3 +3,9 @@
 .flipx {
   transform: scale(-1, 1);
 }
+
+@media (max-width: 30em) {
+  html {
+    font-size: 90%;
+  }
+}

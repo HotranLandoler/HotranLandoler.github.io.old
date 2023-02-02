@@ -4,7 +4,7 @@
       <div>Shawn</div>
       <div>LOU</div>
     </div>
-    <nav>
+    <nav class="main-nav">
       <ul class="nav-list">
         <li>
           <router-link to="/art">art</router-link>
@@ -17,6 +17,39 @@
         </li>
       </ul>
     </nav>
+    <button type="button" class="button-mobile-nav" title="Menu">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0 512 512"
+        class="icon-button"
+      >
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-miterlimit="10"
+          stroke-width="48"
+          d="M88 152h336"
+        ></path>
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-miterlimit="10"
+          stroke-width="48"
+          d="M88 256h336"
+        ></path>
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-miterlimit="10"
+          stroke-width="48"
+          d="M88 360h336"
+        ></path>
+      </svg>
+    </button>
   </header>
   <router-view></router-view>
 </template>
@@ -39,7 +72,7 @@ a:active {
 }
 .main-header {
   margin-bottom: 1rem;
-  padding: 1rem 4rem;
+  padding: 1rem 3rem;
   /* height: 15rem; */
 
   display: flex;
@@ -58,5 +91,29 @@ a:active {
   list-style: none;
   display: flex;
   gap: 4rem;
+}
+.button-mobile-nav {
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  display: none;
+}
+.icon-button {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+@media (max-width: 48em) {
+  .main-nav {
+    display: none;
+  }
+  .button-mobile-nav {
+    display: block;
+  }
+}
+@media (max-width: 30em) {
+  .main-header {
+    padding: 1rem 2rem;
+  }
 }
 </style>
