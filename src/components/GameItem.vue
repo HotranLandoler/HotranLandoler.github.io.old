@@ -1,5 +1,5 @@
 <template>
-  <router-link to="#">
+  <router-link :to="linkto">
     <div class="card">
       <div class="image">
         <img :src="imgSrc" alt="Game image" />
@@ -19,6 +19,7 @@
 const props = defineProps({
   imgSrc: { type: String, required: true },
   title: { type: String, required: true },
+  linkto: { type: String, required: true },
   desc: { type: String },
   canPlay: { type: Boolean },
 });
