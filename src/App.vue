@@ -52,7 +52,12 @@
     </button>
   </header>
   <router-view></router-view>
+  <unity></unity>
 </template>
+
+<script lang="ts" setup>
+import Unity from "./components/Unity.vue";
+</script>
 
 <style scoped>
 a:link,
