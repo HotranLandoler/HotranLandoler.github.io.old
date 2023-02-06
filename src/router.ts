@@ -1,12 +1,14 @@
 import Arts from "./components/pages/Arts.vue";
 import NameFight from "./components/pages/NameFight.vue";
+import Games from "./components/pages/Games.vue";
 import About from "./components/pages/About.vue";
 import { createRouter, createWebHashHistory } from "vue-router";
 
 const routes = [
   { path: "/", redirect: "/game" },
   { path: "/art", component: Arts },
-  { path: "/game", component: NameFight },
+  { path: "/game", component: Games },
+  { path: "/tool", component: NameFight },
   { path: "/about", component: About },
 ];
 

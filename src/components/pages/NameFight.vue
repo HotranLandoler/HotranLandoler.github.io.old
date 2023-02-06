@@ -121,11 +121,6 @@ h2 {
   column-gap: 1rem;
 }
 
-.container {
-  margin: 0 auto 1rem auto;
-  max-width: 60rem;
-}
-
 .card {
   padding: 0.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);

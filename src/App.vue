@@ -13,6 +13,9 @@
           <router-link to="/game">game</router-link>
         </li>
         <li>
+          <router-link to="/tool">tool</router-link>
+        </li>
+        <li>
           <router-link to="/about">about</router-link>
         </li>
       </ul>
@@ -52,7 +55,6 @@
     </button>
   </header>
   <router-view></router-view>
-  <unity></unity>
 </template>
 
 <script lang="ts" setup>
