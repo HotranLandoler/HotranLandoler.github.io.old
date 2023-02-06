@@ -10,9 +10,9 @@ import VueUnity from "Unity-webgl/vue";
 
 const Unity = new UnityWebgl({
   loaderUrl: "/UnityBuild/Build/WebGL.loader.js",
-  dataUrl: "/UnityBuild/Build/WebGL.data.br",
-  frameworkUrl: "/UnityBuild/Build/WebGL.framework.js.br",
-  codeUrl: "/UnityBuild/Build/WebGL.wasm.br",
+  dataUrl: "/UnityBuild/Build/WebGL.data.unityweb",
+  frameworkUrl: "/UnityBuild/Build/WebGL.framework.js.unityweb",
+  codeUrl: "/UnityBuild/Build/WebGL.wasm.unityweb",
   streamingAssetsUrl: "/UnityBuild/StreamingAssets",
 });
 </script>
