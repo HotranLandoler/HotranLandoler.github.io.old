@@ -60,7 +60,7 @@
 <style scoped>
 a:link,
 a:visited {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   letter-spacing: 3px;
   text-transform: uppercase;
   text-decoration: none;
@@ -93,7 +93,7 @@ a:active {
 .nav-list {
   list-style: none;
   display: flex;
-  gap: 4rem;
+  gap: 3rem;
 }
 .button-mobile-nav {
   border: none;
