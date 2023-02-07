@@ -41,6 +41,7 @@ img {
 } */
 
 .card {
+  height: 100%;
   box-shadow: 0 0.1rem 1rem rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   overflow: hidden;

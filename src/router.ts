@@ -1,6 +1,6 @@
 import Arts from "./components/pages/Arts.vue";
 import NameFight from "./components/pages/NameFight.vue";
-import Games from "./components/pages/GamesList.vue";
+import Games from "./components/pages/Games.vue";
 import GamesHome from "./components/pages/games/GamesHome.vue";
 import IntoSoil from "./components/pages/games/Unity.vue";
 import About from "./components/pages/About.vue";
