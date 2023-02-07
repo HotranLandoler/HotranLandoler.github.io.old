@@ -6,13 +6,13 @@
         img-src="/img/cqu-horror.webp"
         title="CQU-Horror"
         desc="Try to survive and find out the truth..."
-        linkto="#"
+        linkto="game/cquhorror"
       />
       <game-item
         img-src="/img/coin-era.webp"
         title="Coin Era"
         desc="Play with your friend"
-        linkto="#"
+        linkto="game/coinera"
       />
       <game-item
         img-src="/img/into-soil.webp"

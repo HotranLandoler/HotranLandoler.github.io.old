@@ -4,6 +4,10 @@
   transform: scale(-1, 1);
 }
 
+.center {
+  margin: 0 auto;
+}
+
 .container {
   margin: 0 auto 1rem auto;
   padding: 0 2rem;
@@ -17,6 +21,11 @@
   margin-bottom: 1.5rem;
   letter-spacing: 3px;
   font-family: "Raleway", sans-serif;
+}
+
+.subheading {
+  font-size: 1.2rem;
+  text-align: center;
 }
 
 @media (max-width: 30em) {

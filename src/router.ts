@@ -1,9 +1,13 @@
 import Arts from "./components/pages/Arts.vue";
 import NameFight from "./components/pages/NameFight.vue";
+import About from "./components/pages/About.vue";
+
 import Games from "./components/pages/Games.vue";
 import GamesHome from "./components/pages/games/GamesHome.vue";
-import IntoSoil from "./components/pages/games/Unity.vue";
-import About from "./components/pages/About.vue";
+import CquHorror from "./components/pages/games/CquHorror.vue";
+import CoinEra from "./components/pages/games/CoinEra.vue";
+import IntoSoil from "./components/pages/games/IntoSoil.vue";
+
 import { createRouter, createWebHashHistory } from "vue-router";
 
 const routes = [
@@ -16,6 +20,14 @@ const routes = [
       {
         path: "",
         component: GamesHome,
+      },
+      {
+        path: "cquhorror",
+        component: CquHorror,
+      },
+      {
+        path: "coinera",
+        component: CoinEra,
       },
       {
         path: "intosoil",
