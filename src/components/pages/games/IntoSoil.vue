@@ -37,7 +37,7 @@ const gameInfo = {
     "Megrez - Art, Music",
     "汪一二中 - Design",
     "Muzeee - Music, Sound",
-    "抱羊羊 - Art",
+    "抱羊羊 - Mascot",
   ],
 };
 </script>

@@ -5,8 +5,8 @@
 </template>
 
 <script lang="ts" setup>
-import UnityWebgl from "Unity-webgl";
-import VueUnity from "Unity-webgl/vue";
+import UnityWebgl from "unity-webgl";
+import VueUnity from "unity-webgl/vue";
 
 const Unity = new UnityWebgl({
   loaderUrl: "/UnityBuild/Build/WebGL.loader.js",
