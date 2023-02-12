@@ -1,5 +1,19 @@
 @import "./base.css";
 
+/* Margins */
+
+.margin-bottom-s {
+  margin-bottom: 0.5rem;
+}
+
+.margin-bottom-m {
+  margin-bottom: 1rem;
+}
+
+.margin-bottom-l {
+  margin-bottom: 1.5rem;
+}
+
 .flipx {
   transform: scale(-1, 1);
 }
@@ -21,6 +35,16 @@
   margin-bottom: 1.5rem;
   letter-spacing: 3px;
   font-family: "Raleway", sans-serif;
+}
+
+.heading-cn {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.subheading-en {
+  font-size: 1.2rem;
+  text-align: center;
 }
 
 .subheading {

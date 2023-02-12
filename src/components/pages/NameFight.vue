@@ -32,7 +32,8 @@ async function start() {
 
 <template>
   <section class="game">
-    <h2>姓名大战</h2>
+    <h2 class="heading-cn">姓名大战</h2>
+    <h2 class="subheading-en margin-bottom-l">Names Fight</h2>
     <div class="container">
       <div class="health-area card">
         <fighter
@@ -63,11 +64,6 @@ async function start() {
 </template>
 
 <style scoped>
-h2 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
-
 .slide-fade-enter-active {
   transition: all 0.3s ease-out;
 }
