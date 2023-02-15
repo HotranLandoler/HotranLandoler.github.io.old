@@ -9,7 +9,6 @@
           I am from China. I code and draw. I make softwares, games and comics.
         </p>
       </article>
-      <footer>&copy; Shawn Lou 2023</footer>
     </div>
   </section>
 </template>
