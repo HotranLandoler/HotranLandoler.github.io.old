@@ -36,11 +36,9 @@
 <style scoped>
 .main-footer {
   padding: 3rem 0;
-  background-color: #333;
+  /* background-color: #333; */
+  color: #555;
   margin-top: auto;
-}
-.main-footer p {
-  color: white;
 }
 .main-footer .container {
   display: flex;
@@ -49,6 +47,7 @@
 }
 .links {
   display: flex;
+  align-items: center;
   gap: 2rem;
 }
 .links a {
@@ -57,10 +56,21 @@
 }
 .icon,
 .icon-img {
-  width: 2.5rem;
-  filter: grayscale(80%);
+  width: 2rem;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+.icon:hover,
+.icon:active,
+.icon-img:hover,
+.icon-img:active {
+  opacity: 1;
 }
 .icon {
-  fill: white;
+  width: 2.5rem;
+  /* fill: white; */
+}
+.icon-img {
+  filter: grayscale(100%);
 }
 </style>
