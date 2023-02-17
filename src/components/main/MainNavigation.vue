@@ -32,7 +32,7 @@ function onNavClicked() {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .link {
   position: relative;
 }
@@ -41,11 +41,11 @@ function onNavClicked() {
   position: absolute;
   left: 0;
   bottom: 0;
-  background-color: #777;
+  background-color: $color-primary;
   width: 100%;
   height: 0.15rem;
   transform: scaleX(0);
-  transition: transform 0.3s ease-out;
+  transition: transform 0.2s ease-out;
 }
 
 .link:link,

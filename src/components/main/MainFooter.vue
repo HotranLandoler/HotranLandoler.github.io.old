@@ -33,9 +33,10 @@
   </footer>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .main-footer {
-  padding: 3rem 0;
+  border-top: 1px solid $color-gray-x-light;
+  padding: 4rem 0 3rem 0;
   /* background-color: #333; */
   color: #555;
   margin-top: auto;

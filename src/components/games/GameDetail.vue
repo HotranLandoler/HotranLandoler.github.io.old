@@ -76,15 +76,15 @@ const props = defineProps<{
 }>();
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 a:link,
 a:visited {
-  color: #15aabf;
+  color: $color-primary;
   transition: color 0.2s;
 }
 a:hover,
 a:active {
-  color: #0c8599;
+  color: $color-primary-dark;
 }
 p {
   line-height: 1.6;
@@ -121,7 +121,7 @@ p {
 }
 .section-title {
   margin-bottom: 1rem;
-  color: #22b8cf;
+  color: $color-primary;
 }
 .info-grid {
   /* box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1); */

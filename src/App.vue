@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <main-header></main-header>
-    <main>
+    <main class="main">
       <router-view></router-view>
     </main>
     <main-footer></main-footer>
@@ -13,8 +13,8 @@ import MainHeader from "./components/main/MainHeader.vue";
 import MainFooter from "./components/main/MainFooter.vue";
 </script>
 
-<style scoped>
-main {
+<style lang="scss" scoped>
+.main {
   padding-bottom: 3rem;
 }
 .wrapper {
