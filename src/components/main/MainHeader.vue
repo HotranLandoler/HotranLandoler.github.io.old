@@ -5,7 +5,7 @@
       <div>LOU</div>
     </div>
     <nav class="main-nav">
-      <navigation></navigation>
+      <main-navigation></main-navigation>
     </nav>
     <button
       type="button"
@@ -47,12 +47,12 @@
     </button>
   </header>
   <nav class="mobile-nav">
-    <navigation @link-clicked="closeNav"></navigation>
+    <main-navigation @link-clicked="closeNav"></main-navigation>
   </nav>
 </template>
 
 <script lang="ts" setup>
-import Navigation from "./Navigation.vue";
+import MainNavigation from "./MainNavigation.vue";
 let mobileNavOpen = false;
 function toggleNav() {
   let nav = document.querySelector(".mobile-nav");

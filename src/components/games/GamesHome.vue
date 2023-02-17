@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts" setup>
-import GameItem from "../../GameItem.vue";
+import GameItem from "./GameItem.vue";
 </script>
 
 <style scoped>

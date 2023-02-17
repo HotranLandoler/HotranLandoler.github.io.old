@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref, reactive } from "vue";
-import Fighter from "../Fighter.vue";
+import Fighter from "./Fighter.vue";
 import { gameLoop } from "./NameFight";
 
 const players = reactive([

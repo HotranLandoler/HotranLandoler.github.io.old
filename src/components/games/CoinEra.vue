@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts" setup>
-import GameDetail from "@/components/GameDetail.vue";
+import GameDetail from "@/components/games/GameDetail.vue";
 const gameFeatures = [
   "Pick coins falling from the sky!",
   "Throw your coin to hit the other player!",

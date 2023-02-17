@@ -1,12 +1,12 @@
 import Arts from "./components/pages/Arts.vue";
-import NameFight from "./components/pages/NameFight.vue";
+import NameFight from "./components/tools/NameFight.vue";
 import About from "./components/pages/About.vue";
 
-import Games from "./components/pages/Games.vue";
-import GamesHome from "./components/pages/games/GamesHome.vue";
-import CquHorror from "./components/pages/games/CquHorror.vue";
-import CoinEra from "./components/pages/games/CoinEra.vue";
-import IntoSoil from "./components/pages/games/IntoSoil.vue";
+import Games from "./components/games/Games.vue";
+import GamesHome from "./components/games/GamesHome.vue";
+import CquHorror from "./components/games/CquHorror.vue";
+import CoinEra from "./components/games/CoinEra.vue";
+import IntoSoil from "./components/games/IntoSoil.vue";
 
 import { createRouter, createWebHashHistory } from "vue-router";
 

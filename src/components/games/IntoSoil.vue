@@ -17,8 +17,8 @@
 </template>
 
 <script lang="ts" setup>
-import Unity from "@/components/Unity.vue";
-import GameDetail from "@/components/GameDetail.vue";
+import Unity from "@/components/games/Unity.vue";
+import GameDetail from "@/components/games/GameDetail.vue";
 const gameFeatures = [
   "Collect resources and scores",
   "Use water and mine to grow your root",

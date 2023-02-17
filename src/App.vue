@@ -9,8 +9,8 @@
 </template>
 
 <script lang="ts" setup>
-import MainHeader from "./components/MainHeader.vue";
-import MainFooter from "./components/MainFooter.vue";
+import MainHeader from "./components/main/MainHeader.vue";
+import MainFooter from "./components/main/MainFooter.vue";
 </script>
 
 <style scoped>

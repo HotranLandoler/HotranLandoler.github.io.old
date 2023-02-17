@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts" setup>
-import GameDetail from "@/components/GameDetail.vue";
+import GameDetail from "@/components/games/GameDetail.vue";
 const gameFeatures = [
   "Find weapons to fight evil creatures and don't die!",
   "Collect supplies and try to survive!",
