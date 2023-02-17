@@ -1,12 +1,16 @@
+import BasePage from "./components/general/BasePage.vue";
+
 import Arts from "./components/pages/Arts.vue";
-import NameFight from "./components/tools/NameFight.vue";
 import About from "./components/pages/About.vue";
 
-import Games from "./components/games/Games.vue";
 import GamesHome from "./components/games/GamesHome.vue";
 import CquHorror from "./components/games/CquHorror.vue";
 import CoinEra from "./components/games/CoinEra.vue";
 import IntoSoil from "./components/games/IntoSoil.vue";
+
+import ToolsHome from "./components/tools/ToolsHome.vue";
+import NameFight from "./components/tools/NameFight.vue";
+import Pomodoro from "./components/tools/Pomodoro.vue";
 
 import { createRouter, createWebHashHistory } from "vue-router";
 
@@ -15,7 +19,7 @@ const routes = [
   { path: "/art", component: Arts },
   {
     path: "/game",
-    component: Games,
+    component: BasePage,
     children: [
       {
         path: "",
@@ -35,7 +39,28 @@ const routes = [
       },
     ],
   },
-  { path: "/tool", component: NameFight },
+  {
+    path: "/tool",
+    component: BasePage,
+    children: [
+      {
+        path: "",
+        component: ToolsHome,
+      },
+      {
+        path: "namesfight",
+        component: NameFight,
+      },
+      {
+        path: "pomodoro",
+        component: Pomodoro,
+      },
+      {
+        path: "intosoil",
+        component: IntoSoil,
+      },
+    ],
+  },
   { path: "/about", component: About },
 ];
 

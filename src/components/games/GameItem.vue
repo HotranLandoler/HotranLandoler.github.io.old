@@ -1,6 +1,6 @@
 <template>
   <router-link :to="linkto">
-    <div class="card">
+    <div class="game-card">
       <div class="image">
         <img :src="imgSrc" alt="Game image" />
       </div>
@@ -36,19 +36,16 @@ img {
   width: 100%;
   /* transition: transform 0.2s; */
 }
-/* img:hover {
-  transform: scale(1.1);
-} */
 
-.card {
+.game-card {
   height: 100%;
   box-shadow: 0 0.1rem 1rem rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   overflow: hidden;
   transition: all 0.3s;
 }
-.card:hover,
-.card:active {
+.game-card:hover,
+.game-card:active {
   transform: translateY(-0.5rem);
   box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.15);
 }

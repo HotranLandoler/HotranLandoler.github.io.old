@@ -33,7 +33,7 @@ async function start() {
 <template>
   <section class="game">
     <h2 class="heading-cn">姓名大战</h2>
-    <h2 class="subheading-en margin-bottom-l">Names Fight</h2>
+    <h2 class="subheading-en">Names Fight</h2>
     <div class="container">
       <div class="health-area card">
         <fighter
@@ -86,7 +86,6 @@ async function start() {
 .game {
   width: 100%;
   padding: 0 1rem;
-  text-align: center;
 }
 
 .log ul {
@@ -103,6 +102,7 @@ async function start() {
 }
 
 .log-title {
+  text-align: center;
   font-size: 1.2rem;
   margin-bottom: 1rem;
   font-weight: 700;
@@ -115,12 +115,6 @@ async function start() {
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   column-gap: 1rem;
-}
-
-.card {
-  padding: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  border-radius: 12px;
 }
 
 .start-button {

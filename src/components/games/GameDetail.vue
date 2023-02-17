@@ -1,7 +1,7 @@
 <template>
   <section>
-    <h2 class="page-heading game-title">{{ gameTitleCn }}</h2>
-    <h2 class="subheading game-title-en">{{ gameTitleEn }}</h2>
+    <h2 class="heading-cn">{{ gameTitleCn }}</h2>
+    <h2 class="subheading-en">{{ gameTitleEn }}</h2>
     <div class="container game-info">
       <div class="game-img">
         <img :src="gameImgSrc" alt="Image of the game" />
@@ -88,12 +88,6 @@ a:active {
 }
 p {
   line-height: 1.6;
-}
-.game-title {
-  margin-bottom: 0.5rem;
-}
-.game-title-en {
-  margin-bottom: 2rem;
 }
 .game-info {
   max-width: 40rem;
