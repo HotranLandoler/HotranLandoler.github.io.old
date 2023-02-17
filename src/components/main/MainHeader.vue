@@ -9,44 +9,18 @@
     </nav>
     <button
       type="button"
-      class="button-mobile-nav"
+      class="button-mobile-nav hamburger hamburger--squeeze"
       title="Menu"
+      aria-controls="mobile-nav"
+      aria-expanded="false"
       @click="toggleNav"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        viewBox="0 0 512 512"
-        class="icon-button"
-      >
-        <path
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-miterlimit="10"
-          stroke-width="48"
-          d="M88 152h336"
-        ></path>
-        <path
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-miterlimit="10"
-          stroke-width="48"
-          d="M88 256h336"
-        ></path>
-        <path
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-miterlimit="10"
-          stroke-width="48"
-          d="M88 360h336"
-        ></path>
-      </svg>
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
     </button>
   </header>
-  <nav class="mobile-nav">
+  <nav id="mobile-nav" class="mobile-nav">
     <main-navigation @link-clicked="closeNav"></main-navigation>
   </nav>
 </template>
@@ -54,16 +28,31 @@
 <script lang="ts" setup>
 import MainNavigation from "./MainNavigation.vue";
 let mobileNavOpen = false;
+
 function toggleNav() {
-  let nav = document.querySelector(".mobile-nav");
-  nav?.classList.toggle("mobile-nav--open");
+  const nav = document.querySelector(".mobile-nav");
+  const hamburger = document.querySelector(".hamburger");
+  if (!hamburger || !nav) {
+    throw new Error("element not found!");
+  }
+
   mobileNavOpen = !mobileNavOpen;
+  nav.classList.toggle("mobile-nav--open");
+  hamburger.classList.toggle("is-active");
+  hamburger.ariaExpanded = mobileNavOpen ? "true" : "false";
 }
 function closeNav() {
   if (mobileNavOpen) {
-    let nav = document.querySelector(".mobile-nav");
-    nav?.classList.remove("mobile-nav--open");
+    const nav = document.querySelector(".mobile-nav");
+    const hamburger = document.querySelector(".hamburger");
+    if (!hamburger || !nav) {
+      throw new Error("element not found!");
+    }
+
     mobileNavOpen = false;
+    nav.classList.remove("mobile-nav--open");
+    hamburger.classList.remove("is-active");
+    hamburger.ariaExpanded = "false";
   }
 }
 </script>
@@ -100,10 +89,6 @@ function closeNav() {
 
   display: none;
 }
-.icon-button {
-  width: 2.5rem;
-  height: 2.5rem;
-}
 
 /* Mobile nav */
 .mobile-nav {
@@ -123,6 +108,97 @@ function closeNav() {
   /* opacity: 0; */
   pointer-events: none;
   visibility: hidden;
+}
+
+/* Hamburger */
+.hamburger {
+  padding: 1rem;
+  /* display: inline-block; */
+  cursor: pointer;
+  transition-property: opacity, filter;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+  font: inherit;
+  color: inherit;
+  text-transform: none;
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  overflow: visible;
+}
+.hamburger:hover {
+  opacity: 0.7;
+}
+.hamburger.is-active:hover {
+  opacity: 0.7;
+}
+.hamburger.is-active .hamburger-inner,
+.hamburger.is-active .hamburger-inner::before,
+.hamburger.is-active .hamburger-inner::after {
+  background-color: #555;
+}
+.hamburger-box {
+  width: 2.5rem;
+  height: 1.5rem;
+  display: inline-block;
+  position: relative;
+}
+
+.hamburger-inner {
+  display: block;
+  top: 50%;
+  margin-top: -2px;
+}
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+  width: 2.5rem;
+  height: 0.25rem;
+  background-color: #555;
+  border-radius: 4px;
+  position: absolute;
+  transition-property: transform;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+}
+.hamburger-inner::before,
+.hamburger-inner::after {
+  content: "";
+  display: block;
+}
+.hamburger-inner::before {
+  top: -10px;
+}
+.hamburger-inner::after {
+  bottom: -10px;
+}
+.hamburger--squeeze .hamburger-inner {
+  transition-duration: 0.075s;
+  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+.hamburger--squeeze .hamburger-inner::before {
+  transition: top 0.075s 0.12s ease, opacity 0.075s ease;
+}
+.hamburger--squeeze .hamburger-inner::after {
+  transition: bottom 0.075s 0.12s ease,
+    transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.hamburger--squeeze.is-active .hamburger-inner {
+  transform: rotate(45deg);
+  transition-delay: 0.12s;
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.hamburger--squeeze.is-active .hamburger-inner::before {
+  top: 0;
+  opacity: 0;
+  transition: top 0.075s ease, opacity 0.075s 0.12s ease;
+}
+.hamburger--squeeze.is-active .hamburger-inner::after {
+  bottom: 0;
+  transform: rotate(-90deg);
+  transition: bottom 0.075s ease,
+    transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 @media (max-width: 48em) {
