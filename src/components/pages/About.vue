@@ -6,7 +6,7 @@
     <div class="container">
       <article>
         <p>
-          I am from China. I code and draw. I make softwares, games and comics.
+          I'm from China. I code and draw. I make softwares, games and comics.
         </p>
       </article>
     </div>

@@ -26,7 +26,7 @@
           title="Gitee"
           href="https://gitee.com/hotran"
         >
-          <img src="img/gitee.jpeg" class="icon-img" alt="Gitee" />
+          <img src="/img/gitee.jpeg" class="icon-img" alt="Gitee" />
         </a>
       </div>
     </div>

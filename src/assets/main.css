@@ -28,6 +28,11 @@
   border-radius: 0.8rem;
 }
 
+.button {
+  border: none;
+  cursor: pointer;
+}
+
 .container {
   margin: 0 auto 1rem auto;
   padding: 0 2rem;

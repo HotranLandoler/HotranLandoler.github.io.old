@@ -8,7 +8,14 @@
         <span>:</span>
         <span>{{ seconds_text }}</span>
       </span>
-      <button type="button" @click="start">Play</button>
+      <button
+        class="button play-pause-button"
+        type="button"
+        @click="start"
+        aria-label="Play or Pause"
+      >
+        <div class="icon"></div>
+      </button>
     </div>
   </section>
 </template>
@@ -16,7 +23,7 @@
 <script lang="ts" setup>
 import { computed, ref } from "vue";
 
-let timerId: number;
+let timerId: number | null = null;
 let working = true;
 const workTime = [0, 10];
 const restTime = [5, 0];
@@ -28,14 +35,15 @@ const seconds_text = computed(() =>
 );
 
 function start() {
-  // if (window.Notification && Notification.permission !== "denied") {
-  //   Notification.requestPermission();
-  // }
-
-  stop();
-  // seconds.value = 0;
-  timerId = setInterval(countdown, 1000);
+  const button = document.querySelector(".play-pause-button");
+  if (timerId) {
+    stop();
+  } else {
+    timerId = setInterval(countdown, 1000);
+  }
+  button!.classList.toggle("pause");
 }
+
 function countdown() {
   seconds.value--;
   if (seconds.value < 0) {
@@ -50,12 +58,16 @@ function countdown() {
 function stop() {
   if (timerId) {
     clearInterval(timerId);
+    timerId = null;
   }
 }
 function timeOut() {
-  working = !working;
   const pomodoro = document.querySelector(".pomodoro");
+  const button = document.querySelector(".play-pause-button");
+
+  working = !working;
   pomodoro!.classList.toggle("working");
+  button!.classList.toggle("pause");
   if (working) {
     [minutes.value, seconds.value] = workTime;
   } else {
@@ -110,6 +122,32 @@ $color-rest: #3498db;
 
   &.working {
     background-color: $color-working;
+  }
+}
+.play-pause-button {
+  $size: 48px;
+  $size-half: calc($size / 2);
+
+  background-color: transparent;
+
+  .icon {
+    height: $size;
+    border: {
+      style: solid;
+      width: $size-half 0 $size-half $size;
+      color: transparent transparent transparent white;
+    }
+    transition: all 0.2s;
+
+    &:hover {
+      border-color: transparent transparent transparent $color-gray-x-light;
+    }
+  }
+  &.pause .icon {
+    border: {
+      style: double;
+      width: 0 0 0 $size;
+    }
   }
 }
 </style>
