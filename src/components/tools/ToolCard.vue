@@ -28,4 +28,11 @@ const props = defineProps<{
     box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.15);
   }
 }
+
+@media (max-width: 30em) {
+  .tool {
+    padding: 1rem;
+    font-size: 1.2rem;
+  }
+}
 </style>

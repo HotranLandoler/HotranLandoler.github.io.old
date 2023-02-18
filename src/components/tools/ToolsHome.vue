@@ -41,4 +41,13 @@ import ToolCard from "./ToolCard.vue";
   background-color: #ec7063;
   color: white;
 }
+
+@media (max-width: 48em) {
+  .tools {
+    grid-template-columns: 1.5fr 1fr;
+  }
+  .tool--pomo {
+    grid-column: 2;
+  }
+}
 </style>

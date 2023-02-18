@@ -74,4 +74,18 @@
 .icon-img {
   filter: grayscale(100%);
 }
+
+@media (max-width: 30em) {
+  .main-footer {
+    padding: 3rem 0 2rem 0;
+  }
+  .main-footer .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  // .links {
+  //   gap: 1rem;
+  // }
+}
 </style>

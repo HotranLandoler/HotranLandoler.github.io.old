@@ -2,20 +2,22 @@
   <section>
     <h2 class="heading-cn">番茄钟</h2>
     <h2 class="subheading-en">Pomodoro</h2>
-    <div class="card pomodoro working">
-      <span class="pomodoro-time">
-        <span>{{ minutes }}</span>
-        <span>:</span>
-        <span>{{ seconds_text }}</span>
-      </span>
-      <button
-        class="button play-pause-button"
-        type="button"
-        @click="start"
-        aria-label="Play or Pause"
-      >
-        <div class="icon"></div>
-      </button>
+    <div class="container">
+      <div class="card pomodoro working">
+        <span class="pomodoro-time">
+          <span>{{ minutes }}</span>
+          <span>:</span>
+          <span>{{ seconds_text }}</span>
+        </span>
+        <button
+          class="button play-pause-button"
+          type="button"
+          @click="start"
+          aria-label="Play or Pause"
+        >
+          <div class="icon"></div>
+        </button>
+      </div>
     </div>
   </section>
 </template>
@@ -25,7 +27,7 @@ import { computed, ref } from "vue";
 
 let timerId: number | null = null;
 let working = true;
-const workTime = [0, 10];
+const workTime = [25, 0];
 const restTime = [5, 0];
 const minutes = ref(workTime[0]);
 const seconds = ref(workTime[1]);
@@ -148,6 +150,12 @@ $color-rest: #3498db;
       style: double;
       width: 0 0 0 $size;
     }
+  }
+}
+
+@media (max-width: 30em) {
+  .pomodoro {
+    font-size: 5rem;
   }
 }
 </style>
