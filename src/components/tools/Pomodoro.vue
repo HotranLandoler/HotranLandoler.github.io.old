@@ -9,14 +9,25 @@
           <span>:</span>
           <span>{{ seconds_text }}</span>
         </span>
-        <button
-          class="button play-pause-button"
-          type="button"
-          @click="start"
-          aria-label="Play or Pause"
-        >
-          <div class="icon"></div>
-        </button>
+        <div class="buttons">
+          <button
+            class="button play-pause-button"
+            type="button"
+            @click="start"
+            title="Play / Pause"
+          >
+            <div class="icon"></div>
+          </button>
+          <button
+            class="button end-button"
+            type="button"
+            @click="timeOut"
+            title="End"
+            :disabled="timerId === null"
+          >
+            <div class="icon"></div>
+          </button>
+        </div>
       </div>
     </div>
   </section>
@@ -37,13 +48,25 @@ const seconds_text = computed(() =>
 );
 
 function start() {
-  const button = document.querySelector(".play-pause-button");
+  const pomodoro = document.querySelector(".pomodoro");
+  pomodoro!.classList.toggle("running");
   if (timerId) {
     stop();
   } else {
-    timerId = setInterval(countdown, 1000);
+    checkNotification();
+    // Start immediately
+    timerId = setInterval(countdown(), 1000);
   }
-  button!.classList.toggle("pause");
+}
+
+function checkNotification() {
+  if (window.Notification && Notification.permission === "default") {
+    Notification.requestPermission().then((permission) => {
+      if (permission === "granted") {
+        const _ = new Notification("Pomodoro started.");
+      }
+    });
+  }
 }
 
 function countdown() {
@@ -56,20 +79,22 @@ function countdown() {
       timeOut();
     }
   }
+  return countdown;
 }
+
 function stop() {
   if (timerId) {
     clearInterval(timerId);
     timerId = null;
   }
 }
+
 function timeOut() {
   const pomodoro = document.querySelector(".pomodoro");
-  const button = document.querySelector(".play-pause-button");
 
   working = !working;
   pomodoro!.classList.toggle("working");
-  button!.classList.toggle("pause");
+  pomodoro!.classList.toggle("running");
   if (working) {
     [minutes.value, seconds.value] = workTime;
   } else {
@@ -77,30 +102,19 @@ function timeOut() {
   }
 
   function notify() {
-    const notification = new Notification("Pomodoro has ended.");
+    if (window.Notification && Notification.permission === "granted") {
+      const _ = new Notification("Pomodoro ended.");
+    }
   }
 
   stop();
-  // if (!("Notification" in window)) {
-  //   // Check if the browser supports notifications
-  //   alert("This browser does not support desktop notification");
-  // } else if (Notification.permission === "granted") {
-  //   // Check whether notification permissions have already been granted;
-  //   // if so, create a notification
-  //   notify();
-  // } else if (Notification.permission !== "denied") {
-  //   // We need to ask the user for permission
-  //   Notification.requestPermission().then((permission) => {
-  //     // If the user accepts, let's create a notification
-  //     if (permission === "granted") {
-  //       notify();
-  //     }
-  //   });
-  // }
+  notify();
 }
 </script>
 
 <style lang="scss" scoped>
+$icon-size: 48px;
+$icon-size-half: calc($icon-size / 2);
 $color-working: #ec7063;
 $color-rest: #3498db;
 
@@ -125,18 +139,21 @@ $color-rest: #3498db;
   &.working {
     background-color: $color-working;
   }
+  &.running .play-pause-button .icon {
+    border: {
+      style: double;
+      width: 0 0 0 $icon-size;
+    }
+  }
 }
 .play-pause-button {
-  $size: 48px;
-  $size-half: calc($size / 2);
-
   background-color: transparent;
 
   .icon {
-    height: $size;
+    height: $icon-size;
     border: {
       style: solid;
-      width: $size-half 0 $size-half $size;
+      width: $icon-size-half 0 $icon-size-half $icon-size;
       color: transparent transparent transparent white;
     }
     transition: all 0.2s;
@@ -145,17 +162,32 @@ $color-rest: #3498db;
       border-color: transparent transparent transparent $color-gray-x-light;
     }
   }
-  &.pause .icon {
-    border: {
-      style: double;
-      width: 0 0 0 $size;
-    }
+}
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+.end-button {
+  background-color: transparent;
+  transition: all 0.3s;
+
+  .icon {
+    background-color: white;
+    width: 32px;
+    height: 32px;
+  }
+  &:disabled {
+    opacity: 0.5;
+    cursor: auto;
   }
 }
 
 @media (max-width: 30em) {
   .pomodoro {
     font-size: 5rem;
+  }
+  .buttons {
   }
 }
 </style>
