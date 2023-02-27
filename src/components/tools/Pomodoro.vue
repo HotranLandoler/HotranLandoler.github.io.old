@@ -127,7 +127,7 @@ $color-rest: #3498db;
   gap: 1rem;
 
   font-size: 6rem;
-  font-family: sans-serif;
+  font-family: "Courier New", Courier, monospace;
   color: white;
 
   max-width: 32rem;
@@ -186,8 +186,6 @@ $color-rest: #3498db;
 @media (max-width: 30em) {
   .pomodoro {
     font-size: 5rem;
-  }
-  .buttons {
   }
 }
 </style>
