@@ -11,6 +11,7 @@ import IntoSoil from "./components/games/IntoSoil.vue";
 import ToolsHome from "./components/tools/ToolsHome.vue";
 import NameFight from "./components/tools/NameFight.vue";
 import Pomodoro from "./components/tools/Pomodoro.vue";
+import UnitConverter from "./components/tools/UnitConverter.vue";
 
 import { createRouter, createWebHashHistory } from "vue-router";
 
@@ -56,8 +57,8 @@ const routes = [
         component: Pomodoro,
       },
       {
-        path: "intosoil",
-        component: IntoSoil,
+        path: "unitconverter",
+        component: UnitConverter,
       },
     ],
   },

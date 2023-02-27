@@ -12,7 +12,10 @@
         title="Pomodoro"
         class="tool--pomo"
       ></tool-card>
-      <tool-card link-to="tool/namesfight" title="Unit Converter"></tool-card>
+      <tool-card
+        link-to="tool/unitconverter"
+        title="Unit Converter"
+      ></tool-card>
       <tool-card link-to="tool/namesfight" title="Names Fight"></tool-card>
     </div>
   </section>
