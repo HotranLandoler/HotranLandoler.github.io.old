@@ -12,6 +12,7 @@ import ToolsHome from "./components/tools/ToolsHome.vue";
 import NameFight from "./components/tools/NameFight.vue";
 import Pomodoro from "./components/tools/Pomodoro.vue";
 import UnitConverter from "./components/tools/UnitConverter.vue";
+import KillSpaces from "./components/tools/KillSpaces.vue";
 
 import { createRouter, createWebHashHistory } from "vue-router";
 
@@ -59,6 +60,10 @@ const routes = [
       {
         path: "unitconverter",
         component: UnitConverter,
+      },
+      {
+        path: "killspaces",
+        component: KillSpaces,
       },
     ],
   },

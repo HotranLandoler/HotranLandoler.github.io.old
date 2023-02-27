@@ -16,7 +16,7 @@
         link-to="tool/unitconverter"
         title="Unit Converter"
       ></tool-card>
-      <tool-card link-to="tool/namesfight" title="Names Fight"></tool-card>
+      <tool-card link-to="tool/killspaces" title="Kill Spaces"></tool-card>
     </div>
   </section>
 </template>
