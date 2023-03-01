@@ -6,8 +6,19 @@
       class="text-input"
       v-model="input"
       placeholder="Input text"
+      resia
       autofocus
-    ></textarea>
+    >
+    </textarea>
+    <div class="kill-br">
+      <input
+        type="checkbox"
+        id="kill-line-breaks"
+        name="kill-line-breaks"
+        v-model="killLineBreaks"
+      />
+      <label for="kill-line-breaks">Kill line breaks</label>
+    </div>
     <button
       type="button"
       class="button button-kill-spaces center"
@@ -22,12 +33,17 @@
 import { ref } from "vue";
 
 const input = ref("");
+const killLineBreaks = ref(true);
 function deleteAllSpaces() {
   if (input.value === "") {
     alert("Nothing to kill.");
     return;
   }
+
   input.value = input.value.replace(/\ /g, "");
+  if (killLineBreaks.value) {
+    input.value = input.value.replace(/(\r\n|\n|\r)/gm, "");
+  }
 
   // Copy to clipboard
   navigator.clipboard.writeText(input.value);
@@ -39,18 +55,26 @@ function deleteAllSpaces() {
   max-width: 48rem;
 }
 .text-input {
+  display: block;
   width: 100%;
-  height: 40vh;
+  height: 30vh;
+  resize: none;
 
   font-size: 1.2rem;
   margin-bottom: 1rem;
   border-radius: 5px;
   padding: 1rem;
+
+  transition: box-shadow 0.2s;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.5rem $color-primary-light;
+  }
 }
 .button-kill-spaces {
   display: block;
-  font-size: 2rem;
-  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  padding: 1rem 1.5rem;
   border-radius: 99px;
 
   background-color: $color-primary;
@@ -62,5 +86,12 @@ function deleteAllSpaces() {
     background-color: $color-primary-light;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   }
+}
+.kill-br {
+  margin-bottom: 1rem;
+
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 </style>
