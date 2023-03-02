@@ -1,0 +1,7 @@
+@mixin focus-outline($width: 0.4rem) {
+  transition: box-shadow 0.2s;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 $width $color-primary-light;
+  }
+}

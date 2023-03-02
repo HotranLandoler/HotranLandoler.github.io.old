@@ -51,10 +51,12 @@ function deleteAllSpaces() {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/scss/globalMixin.scss";
 .kill-spaces {
   max-width: 48rem;
 }
 .text-input {
+  @include focus-outline;
   display: block;
   width: 100%;
   height: 30vh;
@@ -64,12 +66,6 @@ function deleteAllSpaces() {
   margin-bottom: 1rem;
   border-radius: 5px;
   padding: 1rem;
-
-  transition: box-shadow 0.2s;
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 0.5rem $color-primary-light;
-  }
 }
 .button-kill-spaces {
   display: block;
