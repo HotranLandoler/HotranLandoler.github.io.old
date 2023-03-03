@@ -40,14 +40,62 @@
       </p>
       <label for="amount-input">Amount</label>
       <input id="amount-input" type="number" v-model="input" />
-      <label for="from-select">From</label>
-      <select id="from-select" v-model="selectedFrom">
-        <option v-for="unit in unitList">{{ unit }}</option>
-      </select>
-      <label for="to-select">To</label>
-      <select id="to-select" v-model="selectedTo">
-        <option v-for="unit in unitList">{{ unit }}</option>
-      </select>
+      <div class="selects">
+        <!-- <label for="from-select">From</label> -->
+        <select id="from-select" v-model="selectedFrom">
+          <option v-for="unit in unitList">{{ unit }}</option>
+        </select>
+        <button
+          type="button"
+          class="button button-swap"
+          title="Swap"
+          @click="swapFromTo"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 512 512"
+            class="icon"
+          >
+            <path
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="32"
+              d="M304 48l112 112l-112 112"
+            ></path>
+            <path
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="32"
+              d="M398.87 160H96"
+            ></path>
+            <path
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="32"
+              d="M208 464L96 352l112-112"
+            ></path>
+            <path
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="32"
+              d="M114 352h302"
+            ></path>
+          </svg>
+        </button>
+        <!-- <label for="to-select">To</label> -->
+        <select id="to-select" v-model="selectedTo">
+          <option v-for="unit in unitList">{{ unit }}</option>
+        </select>
+      </div>
     </div>
   </section>
 </template>
@@ -85,6 +133,12 @@ function resetFromTo(unitList: string[]) {
   selectedFrom.value = unitList[0];
   selectedTo.value = unitList[1];
 }
+function swapFromTo() {
+  [selectedFrom.value, selectedTo.value] = [
+    selectedTo.value,
+    selectedFrom.value,
+  ];
+}
 </script>
 
 <style lang="scss" scoped>
@@ -98,12 +152,14 @@ function resetFromTo(unitList: string[]) {
 #to-select {
   @include focus-outline;
   width: 100%;
+  height: 100%;
+  display: block;
   font-size: inherit;
   font-family: inherit;
+  background-color: white;
   border: 2px solid $color-gray-x-light;
   border-radius: 0.3rem;
   padding: 0.5rem;
-  margin-bottom: 1rem;
   transition: all 0.2s;
 
   &:hover,
@@ -120,6 +176,7 @@ function resetFromTo(unitList: string[]) {
 }
 #amount-input {
   font-size: 2rem;
+  margin-bottom: 1rem;
 }
 .unit-types {
   display: flex;
@@ -161,6 +218,32 @@ function resetFromTo(unitList: string[]) {
         transform: scaleY(1);
       }
     }
+  }
+}
+.selects {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 0.5rem;
+}
+.button-swap {
+  @include focus-outline;
+  display: block;
+  padding: 0.5rem;
+  border: 0.2rem solid transparent;
+  border-radius: 0.3rem;
+  background-color: transparent;
+
+  transition: all 0.2s ease;
+
+  &:hover {
+    border: 0.2rem solid $color-primary-light;
+  }
+
+  .icon {
+    width: 2rem;
+    height: 2rem;
+    fill: $color-gray;
   }
 }
 </style>
