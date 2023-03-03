@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h2 class="heading-cn">进制转换器</h2>
+    <h2 class="heading-cn">单位转换器</h2>
     <h2 class="subheading-en">Unit Converter</h2>
     <div class="container unit-converter">
       <div class="unit-types">
@@ -15,7 +15,6 @@
           />
           <label for="length" class="label">Length</label>
         </div>
-
         <div>
           <input
             type="radio"
@@ -29,22 +28,18 @@
         </div>
       </div>
       <p class="from">
-        <span class="from-value">1</span>
+        <span class="from-value">{{ input }}</span>
         <span>&nbsp;</span>
         <span class="from-unit">{{ selectedFrom }}</span>
         <span> = </span>
       </p>
       <p class="to">
-        <span class="to-value">2.54</span>
+        <span class="to-value">{{ result }}</span>
         <span>&nbsp;</span>
         <span class="to-unit">{{ selectedTo }}</span>
       </p>
-      <!-- <select class="unit-type-select" v-model="selectedUnit">
-        <option value="Length">Length</option>
-        <option value="Weight">Weight</option>
-      </select> -->
       <label for="amount-input">Amount</label>
-      <input id="amount-input" type="number" />
+      <input id="amount-input" type="number" v-model="input" />
       <label for="from-select">From</label>
       <select id="from-select" v-model="selectedFrom">
         <option v-for="unit in unitList">{{ unit }}</option>
@@ -59,23 +54,37 @@
 
 <script lang="ts" setup>
 import { ref, computed, watch } from "vue";
+import { conversions } from "@/data/dataUnitConverter";
 
 const units = new Map([
-  ["Length", ["Meter", "Inch", "Mile", "Yard"]],
-  ["Weight", ["Kilogram", "Gram", "Pound"]],
+  ["Length", ["Meter", "Inch", "Foot", "Mile", "Yard"]],
+  ["Weight", ["Kilogram", "Pound"]],
 ]);
 
 const selectedUnit = ref("Length");
 const unitList = computed(() => units.get(selectedUnit.value));
-const selectedFrom = ref(units.get(selectedUnit.value)![0]);
-const selectedTo = ref(units.get(selectedUnit.value)![1]);
+const selectedFrom = ref("");
+const selectedTo = ref("");
+const input = ref(1);
+const result = computed(() => {
+  if (!input.value || input.value === 0) return 0;
+  if (selectedFrom.value === selectedTo.value) return 1;
+  return (
+    input.value * conversions.get(selectedFrom.value)!.get(selectedTo.value)!
+  ).toFixed(6);
+});
+resetFromTo(unitList.value!);
 
 watch(selectedUnit, async (newUnit: string, oldUnit: string) => {
   if (newUnit !== oldUnit) {
-    selectedFrom.value = unitList.value![0];
-    selectedTo.value = unitList.value![1];
+    resetFromTo(unitList.value!);
   }
 });
+
+function resetFromTo(unitList: string[]) {
+  selectedFrom.value = unitList[0];
+  selectedTo.value = unitList[1];
+}
 </script>
 
 <style lang="scss" scoped>

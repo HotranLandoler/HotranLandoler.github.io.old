@@ -1,6 +1,6 @@
 import type { Ref } from "vue";
-import { getRandomElement, delay } from "../../utils";
-import { nameFightData as data } from "../../data";
+import { getRandomElement, delay } from "@/utils";
+import { nameFightData as data } from "@/data/dataNamesFight";
 
 export interface Player {
   name: string;
