@@ -17,6 +17,7 @@
         title="Unit Converter"
       ></tool-card>
       <tool-card link-to="tool/killspaces" title="Kill Spaces"></tool-card>
+      <tool-card link-to="tool/decide" title="Decide!"></tool-card>
     </div>
   </section>
 </template>

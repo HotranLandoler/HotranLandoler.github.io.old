@@ -13,6 +13,7 @@ import NameFight from "./components/tools/NameFight.vue";
 import Pomodoro from "./components/tools/Pomodoro.vue";
 import UnitConverter from "./components/tools/UnitConverter.vue";
 import KillSpaces from "./components/tools/KillSpaces.vue";
+import DecideHelper from "./components/tools/DecideHelper.vue";
 
 import { createRouter, createWebHashHistory } from "vue-router";
 
@@ -64,6 +65,10 @@ const routes = [
       {
         path: "killspaces",
         component: KillSpaces,
+      },
+      {
+        path: "decide",
+        component: DecideHelper,
       },
     ],
   },

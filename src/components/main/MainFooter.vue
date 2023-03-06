@@ -1,7 +1,7 @@
 <template>
   <footer class="main-footer">
     <div class="container">
-      <p>&copy; 2023 Shawn Lou. All rights reserved.</p>
+      <p>&copy; 2023 by Shawn Lou.</p>
       <div class="links">
         <a
           rel="noreferrer"
