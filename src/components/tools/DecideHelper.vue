@@ -9,14 +9,18 @@
         <div class="random-number-box">
           <input
             type="number"
-            class="random-number-input"
+            class="input-outlined random-number-input"
             v-model="numberFrom"
           />
           <p>to</p>
-          <input type="number" class="random-number-input" v-model="numberTo" />
+          <input
+            type="number"
+            class="input-outlined random-number-input"
+            v-model="numberTo"
+          />
           <button
             type="button"
-            class="button button-generate"
+            class="button-iconed"
             title="Generate"
             @click="generateNumber"
           >
@@ -118,11 +122,60 @@
         <legend>Help me decide</legend>
         <div class="decide-box">
           <p class="decide-output">Enter options below</p>
-          <button type="button" class="button">Decide!</button>
+          <button type="button" class="button-primary button-decide">
+            Decide!
+          </button>
           <div class="decide-input-box">
-            <input type="text" placeholder="Your option" />
-            <button type="button" class="button">Add</button>
-            <button type="button" class="button">Clear</button>
+            <input
+              type="text"
+              class="input-outlined"
+              placeholder="Your option"
+            />
+            <button type="button" class="button-iconed" title="Add">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 0 512 512"
+                class="icon"
+              >
+                <path
+                  d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192s192-86 192-192z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"
+                  stroke-width="32"
+                ></path>
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="32"
+                  d="M256 176v160"
+                ></path>
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="32"
+                  d="M336 256H176"
+                ></path>
+              </svg>
+            </button>
+            <button type="button" class="button-iconed" title="Clear">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 0 512 512"
+                class="icon"
+              >
+                <path
+                  d="M289.94 256l95-95A24 24 0 0 0 351 127l-95 95l-95-95a24 24 0 0 0-34 34l95 95l-95 95a24 24 0 1 0 34 34l95-95l95 95a24 24 0 0 0 34-34z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </button>
           </div>
 
           <ul class="options-list">
@@ -152,8 +205,6 @@ function generateNumber() {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/globalMixin.scss";
-
 .decide {
   max-width: 32rem;
   display: flex;
@@ -173,22 +224,7 @@ function generateNumber() {
   margin-bottom: 1rem;
 }
 .random-number-input {
-  @include focus-outline;
-  width: 100%;
-  height: 100%;
-  display: block;
   font-size: 1.5rem;
-  font-family: inherit;
-  background-color: white;
-  border: 2px solid $color-gray-x-light;
-  border-radius: 0.3rem;
-  padding: 0.5rem;
-  transition: all 0.2s;
-
-  &:hover,
-  &:active {
-    border: 2px solid $color-primary-light;
-  }
 }
 .random-number-output {
   text-align: center;
@@ -196,26 +232,6 @@ function generateNumber() {
   font-weight: 700;
   overflow: hidden;
   white-space: nowrap;
-}
-.button-generate {
-  @include focus-outline;
-  display: block;
-  padding: 0.5rem;
-  border: 0.2rem solid transparent;
-  border-radius: 0.3rem;
-  background-color: transparent;
-
-  transition: all 0.2s ease;
-
-  &:hover {
-    border: 0.2rem solid $color-primary-light;
-  }
-
-  .icon {
-    width: 2rem;
-    height: 2rem;
-    color: $color-primary;
-  }
 }
 .need-int-box {
   display: flex;
@@ -232,7 +248,11 @@ function generateNumber() {
 .decide-input-box {
   display: grid;
   grid-template-columns: 1fr auto auto;
-  gap: 1rem;
+  gap: 0.5rem;
+}
+.button-decide {
+  align-self: center;
+  width: 60%;
 }
 
 @media (max-width: 30em) {
@@ -241,6 +261,9 @@ function generateNumber() {
   }
   .random-number-output {
     grid-column: span 4;
+  }
+  .button-decide {
+    width: 100%;
   }
 }
 </style>

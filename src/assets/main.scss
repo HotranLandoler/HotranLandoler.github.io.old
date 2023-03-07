@@ -1,0 +1,124 @@
+@import "./base.css";
+
+/* Margins */
+
+.margin-bottom-s {
+  margin-bottom: 0.5rem;
+}
+
+.margin-bottom-m {
+  margin-bottom: 1rem;
+}
+
+.margin-bottom-l {
+  margin-bottom: 1.5rem;
+}
+
+.flipx {
+  transform: scale(-1, 1);
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.card {
+  padding: 0.5rem;
+  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.8rem;
+}
+
+.button {
+  display: block;
+  border: none;
+  cursor: pointer;
+
+  font-family: inherit;
+  font-size: 1.2rem;
+
+  transition: all 0.2s ease;
+}
+
+.button-primary {
+  @extend .button;
+  padding: 0.5rem 1rem;
+  border-radius: 99px;
+  background-color: $color-primary;
+  color: white;
+
+  &:hover,
+  &:active {
+    background-color: $color-primary-light;
+  }
+}
+
+.button-iconed {
+  @extend .button;
+  padding: 0.5rem;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  background-color: transparent;
+
+  &:hover {
+    border: 2px solid $color-primary-light;
+  }
+
+  .icon {
+    width: 2rem;
+    height: 2rem;
+    color: $color-primary;
+    fill: $color-primary;
+    stroke: $color-primary;
+  }
+}
+
+.input-outlined {
+  @include focus-outline;
+  width: 100%;
+  height: 100%;
+  display: block;
+  font-size: inherit;
+  background-color: white;
+  border: 2px solid $color-gray-x-light;
+  border-radius: 5px;
+  padding: 0.5rem;
+  transition: all 0.2s;
+
+  &:hover,
+  &:active {
+    border: 2px solid $color-primary-light;
+  }
+}
+
+.container {
+  margin: 0 auto 1rem auto;
+  padding: 0 2rem;
+  max-width: 60rem;
+}
+
+.page-heading {
+  font-size: 1.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  letter-spacing: 3px;
+  font-family: "Raleway", sans-serif;
+}
+
+.heading-cn {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.subheading-en {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 30em) {
+  html {
+    font-size: 90%;
+  }
+}

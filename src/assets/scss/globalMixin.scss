@@ -1,4 +1,4 @@
-@mixin focus-outline($width: 0.4rem) {
+@mixin focus-outline($width: 0.2rem) {
   transition: box-shadow 0.2s;
   &:focus {
     outline: none;

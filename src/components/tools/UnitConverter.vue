@@ -39,15 +39,20 @@
         <span class="to-unit">{{ selectedTo }}</span>
       </p>
       <label for="amount-input">Amount</label>
-      <input id="amount-input" type="number" v-model="input" />
+      <input
+        id="amount-input"
+        class="input-outlined"
+        type="number"
+        v-model="input"
+      />
       <div class="selects">
         <!-- <label for="from-select">From</label> -->
-        <select id="from-select" v-model="selectedFrom">
+        <select id="from-select" class="input-outlined" v-model="selectedFrom">
           <option v-for="unit in unitList">{{ unit }}</option>
         </select>
         <button
           type="button"
-          class="button button-swap"
+          class="button-iconed"
           title="Swap"
           @click="swapFromTo"
         >
@@ -92,7 +97,7 @@
           </svg>
         </button>
         <!-- <label for="to-select">To</label> -->
-        <select id="to-select" v-model="selectedTo">
+        <select id="to-select" class="input-outlined" v-model="selectedTo">
           <option v-for="unit in unitList">{{ unit }}</option>
         </select>
       </div>
@@ -142,7 +147,6 @@ function swapFromTo() {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/globalMixin.scss";
 .unit-converter {
   max-width: 32rem;
   font-size: 1.5rem;
@@ -150,22 +154,6 @@ function swapFromTo() {
 #amount-input,
 #from-select,
 #to-select {
-  @include focus-outline;
-  width: 100%;
-  height: 100%;
-  display: block;
-  font-size: inherit;
-  font-family: inherit;
-  background-color: white;
-  border: 2px solid $color-gray-x-light;
-  border-radius: 0.3rem;
-  padding: 0.5rem;
-  transition: all 0.2s;
-
-  &:hover,
-  &:active {
-    border: 2px solid $color-primary-light;
-  }
 }
 .from {
   font-size: 2rem;
@@ -227,23 +215,5 @@ function swapFromTo() {
   gap: 0.5rem;
 }
 .button-swap {
-  @include focus-outline;
-  display: block;
-  padding: 0.5rem;
-  border: 0.2rem solid transparent;
-  border-radius: 0.3rem;
-  background-color: transparent;
-
-  transition: all 0.2s ease;
-
-  &:hover {
-    border: 0.2rem solid $color-primary-light;
-  }
-
-  .icon {
-    width: 2rem;
-    height: 2rem;
-    fill: $color-gray;
-  }
 }
 </style>
