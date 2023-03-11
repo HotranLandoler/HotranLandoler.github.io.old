@@ -7,7 +7,7 @@
     <nav class="main-nav">
       <main-navigation></main-navigation>
     </nav>
-    <button type="button" title="Languages" class="button">
+    <!-- <button type="button" title="Languages" class="button">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -23,7 +23,7 @@
           fill="currentColor"
         ></path>
       </svg>
-    </button>
+    </button> -->
     <button
       type="button"
       class="button-mobile-nav hamburger hamburger--squeeze"
