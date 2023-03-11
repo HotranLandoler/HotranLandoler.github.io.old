@@ -1,29 +1,36 @@
 <template>
   <ul class="nav-list">
     <li>
-      <router-link class="link" to="/art" @click="onNavClicked()"
-        >art</router-link
-      >
+      <router-link class="link" to="/art" @click="onNavClicked()">{{
+        $t("nav.art")
+      }}</router-link>
     </li>
     <li>
-      <router-link class="link" to="/game" @click="onNavClicked()"
-        >game</router-link
-      >
+      <router-link class="link" to="/game" @click="onNavClicked()">{{
+        $t("nav.game")
+      }}</router-link>
     </li>
     <li>
-      <router-link class="link" to="/tool" @click="onNavClicked()"
-        >tool</router-link
-      >
+      <router-link class="link" to="/tool" @click="onNavClicked()">{{
+        $t("nav.tool")
+      }}</router-link>
     </li>
     <li>
-      <router-link class="link" to="/about" @click="onNavClicked()"
-        >about</router-link
-      >
+      <router-link class="link" to="/about" @click="onNavClicked()">{{
+        $t("nav.about")
+      }}</router-link>
     </li>
   </ul>
 </template>
 
 <script lang="ts" setup>
+// import { useI18n } from "vue-i18n";
+// const { t, d, n } = useI18n({
+//   inheritLocale: true,
+// });
+// import i18n from "@/i18n/i18n";
+// const { locale, t } = i18n.global;
+
 const emit = defineEmits<{
   (event: "link-clicked"): void;
 }>();

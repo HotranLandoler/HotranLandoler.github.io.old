@@ -1,0 +1,12 @@
+{
+  "nav": {
+    "art": "Art",
+    "game": "Game",
+    "tool": "Tool",
+    "about": "About"
+  },
+  "arts": "Arts",
+  "games": "Games",
+  "tools": "Tools",
+  "aboutme": "About Me"
+}

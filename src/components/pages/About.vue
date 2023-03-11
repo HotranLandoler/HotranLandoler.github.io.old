@@ -1,7 +1,7 @@
 <template>
   <section>
     <header>
-      <h2 class="page-heading">About me</h2>
+      <h2 class="page-heading">{{ $t("aboutme") }}</h2>
     </header>
     <div class="container">
       <article>

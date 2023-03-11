@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h2 class="page-heading">Tools</h2>
+    <h2 class="page-heading">{{ $t("tools") }}</h2>
     <div class="container tools">
       <tool-card
         link-to="tool/namesfight"

@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h2 class="page-heading">Games</h2>
+    <h2 class="page-heading">{{ $t("games") }}</h2>
     <div class="container games-list">
       <game-item
         img-src="/img/cqu-horror.webp"
