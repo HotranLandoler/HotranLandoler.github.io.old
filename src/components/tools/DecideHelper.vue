@@ -121,8 +121,12 @@
       <fieldset class="field-set">
         <legend>Help me decide</legend>
         <div class="decide-box">
-          <p class="decide-output">Enter options below</p>
-          <button type="button" class="button-primary button-decide">
+          <p class="decide-output">{{ decideResult }}</p>
+          <button
+            type="button"
+            class="button-primary button-decide"
+            @click="decide"
+          >
             Decide!
           </button>
           <div class="decide-input-box">
@@ -130,8 +134,14 @@
               type="text"
               class="input-outlined"
               placeholder="Your option"
+              v-model="optionInput"
             />
-            <button type="button" class="button-iconed" title="Add">
+            <button
+              type="button"
+              class="button-iconed"
+              title="Add"
+              @click="addOption"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -163,7 +173,12 @@
                 ></path>
               </svg>
             </button>
-            <button type="button" class="button-iconed" title="Clear">
+            <button
+              type="button"
+              class="button-iconed"
+              title="Clear"
+              @click="clearOptions"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -179,9 +194,11 @@
           </div>
 
           <ul class="options-list">
-            <li>sb</li>
-            <li>sb</li>
-            <li>sb</li>
+            <transition-group name="slide-fade" appear>
+              <li v-for="option in options" :key="option">
+                <p>{{ option }}</p>
+              </li>
+            </transition-group>
           </ul>
         </div>
       </fieldset>
@@ -190,6 +207,7 @@
 </template>
 
 <script lang="ts" setup>
+import { getRandomElement } from "@/utils";
 import { ref } from "vue";
 
 const numberFrom = ref(1);
@@ -197,10 +215,34 @@ const numberTo = ref(6);
 const numberOutput = ref("0");
 const needInt = ref(true);
 
+const optionInput = ref("");
+const decideResult = ref("");
+const options = ref([] as string[]);
+
 function generateNumber() {
   const result =
     Math.random() * (numberTo.value - numberFrom.value) + numberFrom.value;
   numberOutput.value = needInt.value ? result.toFixed(0) : result.toFixed(4);
+}
+
+function addOption() {
+  if (optionInput.value === "") {
+    return;
+  }
+  options.value.unshift(optionInput.value);
+  optionInput.value = "";
+}
+
+function clearOptions() {
+  options.value = [];
+}
+
+function decide() {
+  if (options.value.length == 0) {
+    return;
+  }
+  const [result, _] = getRandomElement(options.value);
+  decideResult.value = result;
 }
 </script>
 
@@ -244,6 +286,7 @@ function generateNumber() {
 }
 .decide-output {
   text-align: center;
+  margin-bottom: 1rem;
 }
 .decide-input-box {
   display: grid;
@@ -253,6 +296,31 @@ function generateNumber() {
 .button-decide {
   align-self: center;
   width: 60%;
+}
+.options-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
+  position: absolute;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
+}
+
+.slide-fade-move {
+  transition: transform 0.3s ease;
 }
 
 @media (max-width: 30em) {
