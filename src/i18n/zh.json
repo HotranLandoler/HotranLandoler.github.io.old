@@ -8,5 +8,21 @@
   "arts": "绘画",
   "games": "游戏",
   "tools": "工具",
-  "aboutme": "关于我"
+  "aboutme": "关于我",
+  "cqu-horror": {
+    "title": "诡校奇谈",
+    "desc": "活下来并找出幕后的真相……",
+    "intro": "介绍"
+  },
+  "coin-era": {
+    "title": "撒币时代",
+    "desc": "俩人一起玩",
+    "intro": "介绍"
+  },
+  "into-soil": {
+    "title": "吃土",
+    "desc": "将根深扎于泥土中……",
+    "intro": "介绍"
+  },
+  "play-now": "点击开玩！"
 }

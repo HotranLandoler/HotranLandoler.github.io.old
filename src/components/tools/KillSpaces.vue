@@ -21,7 +21,7 @@
     </div>
     <button
       type="button"
-      class="button button-kill-spaces center"
+      class="button-primary button-kill-spaces center"
       @click="deleteAllSpaces"
     >
       Kill'em All!
@@ -51,12 +51,11 @@ function deleteAllSpaces() {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/globalMixin.scss";
 .kill-spaces {
   max-width: 48rem;
 }
 .text-input {
-  @include focus-outline;
+  @extend %focus-outline;
   display: block;
   width: 100%;
   height: 30vh;
@@ -68,20 +67,8 @@ function deleteAllSpaces() {
   padding: 1rem;
 }
 .button-kill-spaces {
-  display: block;
   font-size: 1.5rem;
-  padding: 1rem 1.5rem;
-  border-radius: 99px;
-
-  background-color: $color-primary;
-  color: white;
-  transition: all 0.2s;
-
-  &:hover,
-  &:active {
-    background-color: $color-primary-light;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  }
+  padding: 1rem 2rem;
 }
 .kill-br {
   margin-bottom: 1rem;

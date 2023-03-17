@@ -8,5 +8,21 @@
   "arts": "Arts",
   "games": "Games",
   "tools": "Tools",
-  "aboutme": "About Me"
+  "aboutme": "About Me",
+  "cqu-horror": {
+    "title": "CQU-Horror",
+    "desc": "Try to survive and find out the truth...",
+    "intro": "介绍"
+  },
+  "coin-era": {
+    "title": "Coin Era",
+    "desc": "Play with your friend",
+    "intro": "介绍"
+  },
+  "into-soil": {
+    "title": "Into Soil",
+    "desc": "Place your root into the soil...",
+    "intro": "介绍"
+  },
+  "play-now": "Play Now!"
 }

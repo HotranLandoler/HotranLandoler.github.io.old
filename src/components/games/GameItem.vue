@@ -6,10 +6,10 @@
       </div>
       <div class="info">
         <div class="title">
-          <p class="game-title">{{ title }}</p>
-          <div class="play-now" v-if="canPlay">Play Now!</div>
+          <p class="game-title">{{ $t(`${props.game}.title`) }}</p>
+          <div class="play-now" v-if="canPlay">{{ $t("play-now") }}</div>
         </div>
-        <p class="game-desc">{{ desc }}</p>
+        <p class="game-desc">{{ $t(`${props.game}.desc`) }}</p>
       </div>
     </div>
   </router-link>
@@ -18,9 +18,8 @@
 <script lang="ts" setup>
 const props = defineProps({
   imgSrc: { type: String, required: true },
-  title: { type: String, required: true },
+  game: { type: String, required: true },
   linkto: { type: String, required: true },
-  desc: { type: String },
   canPlay: { type: Boolean },
 });
 </script>

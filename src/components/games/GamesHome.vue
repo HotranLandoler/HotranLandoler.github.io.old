@@ -4,20 +4,17 @@
     <div class="container games-list">
       <game-item
         img-src="/img/cqu-horror.webp"
-        title="CQU-Horror"
-        desc="Try to survive and find out the truth..."
+        game="cqu-horror"
         linkto="game/cquhorror"
       />
       <game-item
         img-src="/img/coin-era.webp"
-        title="Coin Era"
-        desc="Play with your friend"
+        game="coin-era"
         linkto="game/coinera"
       />
       <game-item
         img-src="/img/into-soil.webp"
-        title="Into Soil"
-        desc="Place your root into the soil..."
+        game="into-soil"
         linkto="game/intosoil"
         can-play
       />
