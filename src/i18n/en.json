@@ -1,4 +1,6 @@
 {
+  "add": "Add",
+  "clear": "Clear",
   "nav": {
     "art": "Art",
     "game": "Game",
@@ -24,5 +26,14 @@
     "desc": "Place your root into the soil...",
     "intro": "介绍"
   },
-  "play-now": "Play Now!"
+  "play-now": "Play Now!",
+  "decide": {
+    "random-number": "Need a number",
+    "need-int": "Need a Integer",
+    "make-number": "Generate",
+    "help-decide": "Help me decide",
+    "make-decide": "Decide!",
+    "option": "Option",
+    "no-result": "Add your options below"
+  }
 }

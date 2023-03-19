@@ -4,7 +4,7 @@
     <h2 class="subheading-en">Decide</h2>
     <div class="container decide">
       <fieldset class="field-set">
-        <legend>Need a number</legend>
+        <legend>{{ $t("decide.random-number") }}</legend>
 
         <div class="random-number-box">
           <input
@@ -12,7 +12,7 @@
             class="input-outlined random-number-input"
             v-model="numberFrom"
           />
-          <p>to</p>
+          <p class="to">~</p>
           <input
             type="number"
             class="input-outlined random-number-input"
@@ -21,7 +21,7 @@
           <button
             type="button"
             class="button-iconed"
-            title="Generate"
+            :title="$t('decide.make-number')"
             @click="generateNumber"
           >
             <svg
@@ -114,32 +114,38 @@
             name="need-int"
             v-model="needInt"
           />
-          <label for="need-int">Need a Integer</label>
+          <label for="need-int">{{ $t("decide.need-int") }}</label>
         </div>
       </fieldset>
 
       <fieldset class="field-set">
-        <legend>Help me decide</legend>
+        <legend>{{ $t("decide.help-decide") }}</legend>
         <div class="decide-box">
-          <p class="decide-output">{{ decideResult }}</p>
+          <p class="decide-output" v-if="showDecideResult">
+            {{ decideResult }}
+          </p>
+          <p class="decide-output-placeholder" v-else>
+            {{ $t("decide.no-result") }}
+          </p>
           <button
             type="button"
             class="button-primary button-decide"
             @click="decide"
+            :disabled="decideDisabled"
           >
-            Decide!
+            {{ $t("decide.make-decide") }}
           </button>
           <div class="decide-input-box">
             <input
               type="text"
               class="input-outlined"
-              placeholder="Your option"
+              :placeholder="$t('decide.option')"
               v-model="optionInput"
             />
             <button
               type="button"
               class="button-iconed"
-              title="Add"
+              :title="$t('add')"
               @click="addOption"
             >
               <svg
@@ -176,7 +182,7 @@
             <button
               type="button"
               class="button-iconed"
-              title="Clear"
+              :title="$t('clear')"
               @click="clearOptions"
             >
               <svg
@@ -208,7 +214,7 @@
 
 <script lang="ts" setup>
 import { getRandomElement } from "@/utils";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 const numberFrom = ref(1);
 const numberTo = ref(6);
@@ -218,6 +224,9 @@ const needInt = ref(true);
 const optionInput = ref("");
 const decideResult = ref("");
 const options = ref([] as string[]);
+
+const decideDisabled = computed(() => options.value.length == 0);
+const showDecideResult = computed(() => decideResult.value != "");
 
 function generateNumber() {
   const result =
@@ -275,6 +284,10 @@ function decide() {
   overflow: hidden;
   white-space: nowrap;
 }
+.to {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
 .need-int-box {
   display: flex;
   gap: 0.5rem;
@@ -284,9 +297,13 @@ function decide() {
   flex-direction: column;
   gap: 0.5rem;
 }
-.decide-output {
+.decide-output,
+.decide-output-placeholder {
   text-align: center;
   margin-bottom: 1rem;
+}
+.decide-output-placeholder {
+  color: $color-gray-light;
 }
 .decide-input-box {
   display: grid;

@@ -1,4 +1,6 @@
 {
+  "add": "添加",
+  "clear": "清空",
   "nav": {
     "art": "绘画",
     "game": "游戏",
@@ -24,5 +26,14 @@
     "desc": "将根深扎于泥土中……",
     "intro": "介绍"
   },
-  "play-now": "点击开玩！"
+  "play-now": "点击开玩！",
+  "decide": {
+    "random-number": "随机数字",
+    "need-int": "整数",
+    "make-number": "生成",
+    "help-decide": "帮我决定",
+    "make-decide": "决定了！",
+    "option": "可选项",
+    "no-result": "在下方添加你的选项"
+  }
 }

@@ -37,6 +37,10 @@
   font-size: 1.2rem;
 
   transition: all 0.2s ease;
+
+  &:disabled {
+    pointer-events: none;
+  }
 }
 
 .button-primary {
@@ -50,6 +54,9 @@
   &:active {
     background-color: $color-primary-light;
     box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.15);
+  }
+  &:disabled {
+    background-color: $color-gray-x-light;
   }
 }
 
