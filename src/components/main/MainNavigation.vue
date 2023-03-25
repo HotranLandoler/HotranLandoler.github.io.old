@@ -21,7 +21,7 @@
       }}</router-link>
     </li>
     <li>
-      <locale-dropdown></locale-dropdown>
+      <locale-dropdown class="link"></locale-dropdown>
     </li>
   </ul>
 </template>

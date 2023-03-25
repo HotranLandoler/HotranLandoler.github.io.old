@@ -51,7 +51,7 @@ async function start() {
           flip
         />
       </div>
-      <div class="log card">
+      <div class="card log">
         <p class="log-title">战斗记录</p>
         <ul>
           <transition-group name="slide-fade" appear>
@@ -98,7 +98,7 @@ async function start() {
 .log {
   margin: 0 auto;
   max-width: 40rem;
-  padding: 0.5rem;
+  padding: 1rem 2rem;
 }
 
 .log-title {

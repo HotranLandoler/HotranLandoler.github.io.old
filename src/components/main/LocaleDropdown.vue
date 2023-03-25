@@ -52,10 +52,10 @@ function setLocale(newLocale: string) {
 <style lang="scss" scoped>
 .dropdown-lang {
   position: relative;
-  padding: 0.5rem;
+  padding: 0;
   .icon {
-    width: 2rem;
-    height: 2rem;
+    width: 1.6rem;
+    height: 1.6rem;
   }
   .panel {
     opacity: 0;
@@ -85,6 +85,7 @@ function setLocale(newLocale: string) {
 .button-lang {
   background-color: transparent;
   border: none;
+  font-size: 1rem;
   padding: 0.5rem 2rem;
   transition: all 0.2s;
   width: 100%;

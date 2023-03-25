@@ -22,27 +22,16 @@ const input_value = computed({
 
 <template>
   <div>
-    <input type="text" v-model="input_value" />
+    <input type="text" class="input-outlined" v-model="input_value" />
     <progress :value="hp_value" :class="{ flipx: flip }"></progress>
   </div>
 </template>
 
 <style scoped>
 input {
-  width: 100%;
-  border: 2px solid #8fc5e8;
-  border-radius: 10px;
-  outline-style: none;
-  font-size: x-large;
   text-align: center;
-}
-
-input:hover {
-  border: 2px solid #2696e0;
-}
-
-input:focus {
-  border: 2px solid #006db5;
+  font-size: 1.2rem;
+  padding: 0.25rem;
 }
 
 progress {

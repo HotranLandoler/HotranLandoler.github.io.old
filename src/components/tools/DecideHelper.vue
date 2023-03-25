@@ -250,7 +250,7 @@ function decide() {
   if (options.value.length == 0) {
     return;
   }
-  const [result, _] = getRandomElement(options.value);
+  const [result] = getRandomElement(options.value);
   decideResult.value = result;
 }
 </script>
